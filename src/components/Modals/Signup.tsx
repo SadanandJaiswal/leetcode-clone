@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 type SignUpProps = {};
 
@@ -25,18 +26,17 @@ const SignUp:React.FC<SignUpProps> = () => {
 		try {
 			const newUser = await createUserWithEmailAndPassword(inputs.email, inputs.password);
 			if (!newUser) return;
+			toast.success("User Successfully Registered", { position: "top-center" });
 			router.push("/");
 		} catch (error: any) {
-			// toast.error(error.message, { position: "top-center" });
-			alert(error.message)
+			toast.error(error.message, { position: "top-center" });
 		} finally {
-			// toast.dismiss("loadingToast");
-			console.log("completed")
+			toast.dismiss("loadingToast");
 		}
 	}
 
 	useEffect(() => {
-		if (error) alert(error.message);
+		if (error) toast.error(error.message, { position: "top-center" });
 	}, [error]);
     
     return (
@@ -98,7 +98,6 @@ const SignUp:React.FC<SignUpProps> = () => {
         '
 			>
 				{loading ? "Registering..." : "Register"}
-                Register
 			</button>
 
 			<div className='text-sm font-medium text-gray-300'>

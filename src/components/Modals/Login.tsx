@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useSetRecoilState } from "recoil";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 type LoginProps = {};
 
@@ -26,16 +26,15 @@ const Login:React.FC<LoginProps> = () => {
 		try {
 			const newUser = await signInWithEmailAndPassword(inputs.email, inputs.password);
 			if (!newUser) return;
+			toast.success("Login Successfull", { position: "top-center" });
 			router.push("/");
 		} catch (error: any) {
-			// toast.error(error.message, { position: "top-center", autoClose: 3000, theme: "dark" });
-			alert(error.message);
+			toast.error(error.message, { position: "top-center", autoClose: 3000, theme: "dark" });
 		}
     }
 
 	useEffect(() => {
-		// if (error) toast.error(error.message, { position: "top-center", autoClose: 3000, theme: "dark" });
-		if (error) alert(error.message);
+		if (error) toast.error(error.message, { position: "top-center", autoClose: 3000, theme: "dark" });
 	}, [error]);
 
     return (
