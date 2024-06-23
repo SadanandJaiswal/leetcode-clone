@@ -38,3 +38,4 @@ next-env.d.ts
 .env
 start.txt
 package-lock.json
+removedCode

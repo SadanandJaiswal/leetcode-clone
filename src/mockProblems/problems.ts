@@ -89,3 +89,39 @@ export const problems: Problem[] = [
 		videoId: "",
 	},
 ];
+
+
+interface Example {
+    id: number;
+    inputText: string;
+    outputText: string;
+    explanation: string;
+    img?: string;
+}
+
+interface Problem2 {
+    title: string;
+    problemStatement: string;
+    examples: Example[];
+    constraints: string;
+}
+
+export const problem: Problem2 = {
+    title: "1. Two Sum",
+    problemStatement: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus iure praesentium eveniet blanditiis corrupti, temporibus doloremque explicabo rem vero impedit ipsam incidunt delectus neque amet molestias corporis quis accusantium pariatur officia itaque repudiandae dolorum sed eos modi. Dignissimos dicta quas autem iste officiis cumque numquam, ipsa eos illo, architecto sed.",
+    examples: [
+        {
+            id: 1,
+            inputText: "input 1",
+            outputText: "output 1",
+            explanation: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum similique assumenda est minima consequatur ex.",
+        },
+        {
+            id: 2,
+            inputText: "input 1",
+            outputText: "output 1",
+            explanation: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum similique assumenda est minima consequatur ex.",
+        },
+    ],
+    constraints: "this is constraints",
+};
