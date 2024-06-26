@@ -3,9 +3,14 @@ import Topbar from "@/components/Topbar/Topbar";
 import { useState } from "react";
 import {doc, setDoc} from "firebase/firestore";
 import { firestore } from "@/firebase/firebase";
+import useHasMounted from "@/hooks/useHasMounted";
 
 export default function Home() {
   const [loadingProblems, setLoadingProblems] = useState(false);
+  const hasMounted = useHasMounted();
+
+	if (!hasMounted) return null;
+
   return (
     <main className='bg-dark-layer-2 min-h-screen'>
       <Topbar />
